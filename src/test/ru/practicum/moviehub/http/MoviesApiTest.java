@@ -5,6 +5,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import ru.practicum.moviehub.store.MoviesStore;
+import org.junit.jupiter.api.DisplayName;
 
 import java.net.URI;
 import java.net.http.HttpClient;
@@ -43,6 +44,7 @@ public class MoviesApiTest {
     }
 
     @Test
+    @DisplayName("Получить пустой список фильмов")
     void getMovies_whenEmpty_returnsEmptyArray() throws Exception {
         HttpRequest req = HttpRequest.newBuilder()
                 .uri(URI.create(BASE + "/movies"))
@@ -65,6 +67,7 @@ public class MoviesApiTest {
     }
 
     @Test
+    @DisplayName("Добавить фильм — успешно")
     void postMovie_whenValid_returnsCreatedMovie() throws Exception {
         String requestBody = "{\"name\": \"Inception\"}";
 
@@ -91,6 +94,7 @@ public class MoviesApiTest {
     }
 
     @Test
+    @DisplayName("Добавить фильм с пустым названием — ошибка 400")
     void postMovie_whenNameIsEmpty_returnsBadRequest() throws Exception {
         String requestBody = "{\"name\": \"\"}";
 

@@ -24,6 +24,8 @@ public class MoviesHandler extends BaseHttpHandler {
             sendJson(ex, 200, json);
         } else if (method.equalsIgnoreCase("POST")) {
             handlePost(ex);
+        } else {
+            sendJson(ex, 405, "{\"error\": \"Метод не поддерживается\"}");
         }
     }
 
